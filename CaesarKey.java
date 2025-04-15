@@ -11,7 +11,6 @@ public class CaesarKey extends Substitution {
         if (key.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        ;
         this.key = key;
         setupEncoding();
     }

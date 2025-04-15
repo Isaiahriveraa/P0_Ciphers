@@ -38,10 +38,6 @@ public class Substitution extends Cipher {
     }
 
     public String encrypt(String input) {
-        if (encoding == null) {
-            throw new IllegalArgumentException("Encoding is null, not valid encoding.");
-        }
-
         if (encoding.isEmpty()) {
             throw new IllegalStateException("Encoding has not been set");
         }
@@ -62,15 +58,18 @@ public class Substitution extends Cipher {
             char originalChar = (char) (MIN_CHAR + i);
             char encodedChar = encoding.charAt(i);
 
-            // encryption: original -> encoded
+            //encryption: original -> encoded
             encryptMap.put(originalChar, encodedChar);
 
-            // decryption: encoded -> original
+            //decryption: encoded -> original
             decryptMap.put(encodedChar, originalChar);
         }
     }
 
     public void checkValidEncoding(String encoding) {
+        if (encoding == null) {
+            throw new IllegalArgumentException("Encoding is null.");
+        }
         if (encoding.length() != TOTAL_CHARS) {
             throw new IllegalArgumentException("Encoding length is not valid, must match the"
                     + "number of characters in the cipher range");

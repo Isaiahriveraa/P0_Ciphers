@@ -1,7 +1,6 @@
 import java.util.*;
 
 // TODO: Write your implementation to Subsitution here!
-//encryption algorithm
 public class Substitution extends Cipher {
     private String encoding;
     private Map<Character, Character> encryptMap;
@@ -23,18 +22,8 @@ public class Substitution extends Cipher {
         checkValidEncoding(encoding);
         this.encoding = encoding;
         setupMaps();
-
     }
 
-    // Behavior: Applies this inverse of this Cipher's encryption scheme to 'input'
-    // (reversing
-    // a single round of encryption if previously applied), returning the result
-    // Exceptions: None
-    // Returns: The result of applying the inverse of this Cipher's encryption
-    // scheme to `input`
-    // Parameters: 'input' - the string to be encrypted. Should be non-null and all
-    // characters of
-    // 'input' should be within the encodable range.
     public String decrypt(String input) {
         if (encoding.isEmpty()) {
             throw new IllegalStateException("Encoding has not been set");
@@ -48,14 +37,11 @@ public class Substitution extends Cipher {
         return decryptedString;
     }
 
-    // Behavior: Applies this Cipher's encryption scheme to 'input', returning the
-    // result
-    // Exceptions: None
-    // Returns: The result of applying this Cipher's encryption scheme to `input`
-    // Parameters: 'input' - the string to be encrypted. Should be non-null and all
-    // characters of
-    // 'input' should be within the encodable range.
     public String encrypt(String input) {
+        if (encoding == null) {
+            throw new IllegalArgumentException("Encoding is null, not valid encoding.");
+        }
+
         if (encoding.isEmpty()) {
             throw new IllegalStateException("Encoding has not been set");
         }
@@ -76,19 +62,15 @@ public class Substitution extends Cipher {
             char originalChar = (char) (MIN_CHAR + i);
             char encodedChar = encoding.charAt(i);
 
-            // For encryption: original → encoded
+            // encryption: original -> encoded
             encryptMap.put(originalChar, encodedChar);
 
-            // For decryption: encoded → original
+            // decryption: encoded -> original
             decryptMap.put(encodedChar, originalChar);
         }
     }
 
     public void checkValidEncoding(String encoding) {
-        if (encoding == null) {
-            throw new IllegalArgumentException("Encoding is null, not valid encoding.");
-        }
-
         if (encoding.length() != TOTAL_CHARS) {
             throw new IllegalArgumentException("Encoding length is not valid, must match the"
                     + "number of characters in the cipher range");
@@ -121,4 +103,7 @@ public class Substitution extends Cipher {
         }
     }
 
+    public String getEncoding() {
+        return encoding;
+    }
 }

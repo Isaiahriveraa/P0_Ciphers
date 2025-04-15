@@ -4,7 +4,6 @@ import java.io.*;
 // Represents a classical cipher that is able to encrypt a plaintext into a ciphertext, and
 // decrypt a ciphertext into a plaintext. Also capable of encrypting and decrypting entire files
 public abstract class Cipher {
-    // private Map<Character, Character> characterMap = new HashMap<>();
 
     // The minimum character able to be encrypted/decrypted by any cipher
     // (we encourage you to change this value when testing!)

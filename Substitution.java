@@ -1,4 +1,4 @@
-import java.util.*;
+= import java.util.*;
 
 // TODO: Write your implementation to Subsitution here!
 public class Substitution extends Cipher {
@@ -100,9 +100,5 @@ public class Substitution extends Cipher {
                 throw new IllegalArgumentException("Input contains character outside of Cipher range");
             }
         }
-    }
-
-    public String getEncoding() {
-        return encoding;
     }
 }

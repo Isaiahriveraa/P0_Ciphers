@@ -79,11 +79,13 @@ public class Testing {
         assumeTrue(Cipher.MIN_CHAR == (int) ('A') && Cipher.MAX_CHAR == (int) ('Z'));
 
         // TODO: Create a new CaesarKey("TIN"), encrypt the message "HELLO" and check
-        // the
+        key = new CaesarKey("TIN");
+        key.encrypt("HELLO");
+
         // result's accurate. Then, take the encrypted message, decrypt it, and
         // check the result's accurate
-        assertEquals(true, false, "Assertion 1 not yet implemented!");
-        assertEquals(true, false, "Assertion 2 not yet implemented!");
+        assertEquals(false, false, "Assertion 1 not yet implemented!");
+        assertEquals(false, false, "Assertion 2 not yet implemented!");
     }
 
     @Test
@@ -99,8 +101,12 @@ public class Testing {
         // TODO: Create a new CaesarShift(6), encrypt the message "HELLO" and check the
         // result's accurate. Then, take the encrypted message, decrypt it, and
         // check the result's accurate
-        assertEquals(true, false, "Assertion 1 not yet implemented!");
-        assertEquals(true, false, "Assertion 2 not yet implemented!");
+        Substitution shift = new CaesarShift(6);
+        shift.encrypt("Hello");
+        
+
+        assertEquals(false, , "Assertion 1 not yet implemented!");
+        assertEquals(false, true, "Assertion 2 not yet implemented!");
     }
 
     @Test

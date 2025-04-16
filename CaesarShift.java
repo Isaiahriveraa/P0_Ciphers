@@ -1,6 +1,4 @@
 import java.util.*;
-
-// TODO: Write your implementation to CaesarShift here!
 public class CaesarShift extends Substitution {
     private int shift;
 
@@ -9,44 +7,25 @@ public class CaesarShift extends Substitution {
             throw new IllegalArgumentException();
         }
         this.shift = shift;
+        setEncoding("");
     }
 
     @Override
-    public String encrypt(String input) {
-        // if (getEncoding().isEmpty()) {
-        // throw new IllegalArgumentException("Encoding has not been set");
-        // }
-        checkValidInput(input);
-        String encrypted = "";
+    public void setEncoding(String encoding) {
+        Queue<Character> shiftEncoding = new LinkedList<>();
 
-        for (int i = 0; i < input.length(); i++) {
-            int currShift = (int) input.charAt(i);
-            for (int j = 0; j < shift; j++) {
-                if (currShift >= MAX_CHAR) {
-                    currShift = MIN_CHAR - 1;
-                }
-                currShift++;
-            }
-            encrypted += (char) (currShift) + "";
+        for (int i = 0; i < TOTAL_CHARS; i++) {
+            shiftEncoding.add((char) (MIN_CHAR + i));
         }
-        return encrypted;
-    }
 
-    @Override
-    public String decrypt(String input) {
-        checkValidInput(input);
-        String decrypted = "";
-
-        for (int i = 0; i < input.length(); i++) {
-            int currShift = (int) input.charAt(i);
-            for (int j = 0; j < shift; j++) {
-                if (currShift <= MIN_CHAR) {
-                    currShift = MAX_CHAR + 1;
-                }
-                currShift--;
-            }
-            decrypted += (char) (currShift) + "";
+        for (int i = 0; i < shift; i++) {
+            shiftEncoding.add(shiftEncoding.remove());
         }
-        return decrypted;
+
+        String newEncoding = "";
+        while (!shiftEncoding.isEmpty()) {
+            newEncoding += shiftEncoding.remove() + "";
+        }
+        super.setEncoding(newEncoding);
     }
 }

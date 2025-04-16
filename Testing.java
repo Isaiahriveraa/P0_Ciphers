@@ -2,7 +2,12 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.Assume.assumeTrue;
 import java.util.*;
-
+/* Name: Yonie Isaiah Rivera Aguilar
+ * Date: 16 April 2025
+ * Course: CSE 123
+ * Instructor: Professor Brunelle
+ * TA: Eeshani Shilamkar
+ */
 public class Testing {
 
     @Test

@@ -1,6 +1,11 @@
 import java.util.*;
 import java.io.*;
-
+/* Name: Yonie Isaiah Rivera Aguilar
+ * Date: 16 April 2025
+ * Course: CSE 123
+ * Instructor: Professor Brunelle
+ * TA: Eeshani Shilamkar
+ */ 
 // Represents a classical cipher that is able to encrypt a plaintext into a ciphertext, and
 // decrypt a ciphertext into a plaintext. Also capable of encrypting and decrypting entire files
 public abstract class Cipher {
